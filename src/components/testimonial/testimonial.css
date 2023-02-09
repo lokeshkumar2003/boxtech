@@ -1,0 +1,19 @@
+#test-card {
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+#test-card > div:nth-child(1){
+    background-color: #FFBF23;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+#test-card > div:nth-child(1) span {
+    width:20px;
+    height: 20px;
+    /* border-radius: 50%; */
+    background-color: black;
+    margin-left:15px;
+    margin-right: 15px;
+}

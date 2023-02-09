@@ -1,9 +1,26 @@
 #cont{
-    background-color: orange;
+    background-color: #ffbe23;
     
     /* width: 200px; */
 
     /* border-radius:0% 80% 0 0; */
     /* transform:skew(20deg,0,0,0); */
 
+}
+
+h1 {
+    font-size: 28px;
+
+}
+
+#quote {
+    margin-top: 18px;
+    margin-bottom: 18px;
+    padding-left: 25px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transform: translateX(80px);
+    text-align: justify;
+    
+    
 }
