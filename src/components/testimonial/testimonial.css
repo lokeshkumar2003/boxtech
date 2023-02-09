@@ -1,5 +1,5 @@
 #test-card {
-    border: 2px solid black;
+    border: 3px solid black;
     border-radius: 20px;
 }
 
@@ -7,13 +7,50 @@
     background-color: #FFBF23;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    padding: 5px;
+    height: 25px;
+    border-bottom: 3px solid black ;
 }
 
-#test-card > div:nth-child(1) span {
-    width:20px;
-    height: 20px;
-    /* border-radius: 50%; */
+.small-btns {
+    /* position: relative; */
+    width:10px;
+    height: 10px;
+    position: absolute;
+    border-radius: 50%;
     background-color: black;
-    margin-left:15px;
-    margin-right: 15px;
+    margin-left:10px;
+    margin-right: 10px;
+}
+
+.small-btns:nth-child(2){
+    margin-left:25px;
+    margin-right: 25px;
+}
+
+.small-btns:nth-child(3){
+    margin-left:40px;
+    margin-right: 40px;
+}
+
+#words p {
+    padding:15px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    line-height: 22px;
+}
+
+#author-desc {
+    padding: 6px;
+}
+
+#author-desc > h5 {
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+#author-desc > h6 {
+    font-size: 12px;
+    letter-spacing: 1px;
 }

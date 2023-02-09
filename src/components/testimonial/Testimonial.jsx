@@ -37,17 +37,19 @@ const Testimonial = () => {
                             <div>
                                 {/** boxes */}
                                 <div>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
+                                    <span className="small-btns"></span>
+                                    <span className="small-btns"></span>
+                                    <span className="small-btns"></span>
                                 </div>
                             </div>
-                            <p>
-                                {item['words']}
-                            </p>
-                            <div>
-                                {item['author']}<br/>
-                                {item['company']}
+                            <div className="h-[75%]" id="words">
+                              <p>
+                                  {item['words']}
+                              </p>
+                            </div>
+                            <div id="author-desc" className="float-right">
+                                <h5>{item['author']}</h5>
+                                <h6>{item['company']}</h6>
                             </div>
                       </div>
             )
