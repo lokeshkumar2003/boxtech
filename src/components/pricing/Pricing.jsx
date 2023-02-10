@@ -18,7 +18,7 @@ const Pricing = () => {
         <div>
             <div className="py-[18%] px-[10%]">
                 <div className="my-[15px]" >
-                    <h3>Choose your pricing plan</h3>
+                    <h3 id="pricing">Choose your pricing plan</h3>
                 </div>
                 <div className="rounded-[10px] border-black border-[3px] h-[360px] w-[330px]">
                     <div className="bg-[#FFBF23] w-[100%] p-[15px] border-b-[3px] border-black">
