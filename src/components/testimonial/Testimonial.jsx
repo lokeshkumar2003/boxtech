@@ -25,8 +25,8 @@ const Testimonial = () => {
 
   return (
     <div className="h-[90vh] w-full sm:h-auto">
-      <div className="p-[6%]">
-        <h1>
+      <div className="p-[5%]">
+        <h1 className="text-[30px]">
           What Our <span style={{ color: "#ffbe23" }}>Clients</span> Say?
         </h1>
       </div>
@@ -43,7 +43,7 @@ const Testimonial = () => {
                                 </div>
                             </div>
                             <div className="h-[75%]" id="words">
-                              <p>
+                              <p className="p-[15px] text-[12px] tracking-[1px] leading-[22px] sm:text-[12px] sm:text-justify">
                                   {item['words']}
                               </p>
                             </div>

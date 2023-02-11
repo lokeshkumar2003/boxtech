@@ -15,8 +15,8 @@ const SecondCnt = () => {
                 </p>
             </div>
         </div>
-        <div className='w-full'>
-            <img src="images/mob.jpg" className="w-full" alt="computer and mobile screen"/>
+        <div className='w-full p-[5%]'>
+            <img src="images/mob.jpg" className="mx-auto w-80% h-full" alt="computer and mobile screen"/>
         </div>
     </div>
   )

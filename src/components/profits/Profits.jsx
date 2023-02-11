@@ -5,7 +5,7 @@ const Profits = () => {
     <div className="h-auto w-full flex flex-col justify-center items-center">
         <div className="flex flex-col justify-center items-center w-[70%] sm:w-[100%]">
             <div>
-                <p className="text-[38px] tracking-[2px] text-center p-[25px] sm:text-[28px]">
+                <p className="text-[38px] tracking-[2px] text-center p-[25px] sm:p-[2%] sm:text-[28px]">
                     Get Ready to Maximize Your Profits With Our     
                     Software.
                 </p>

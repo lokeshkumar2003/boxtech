@@ -16,19 +16,19 @@ const Footer = () => {
         <div className="h-auto bg-[#FFBF23] w-full">
             <div className="p-[15px]">
                 <a href="/">
-                    <img src="images/logo-black.png" alt="logo" className="w-[140px] h-[40px] ml-[50px]" />
+                    <img src="images/logo-black.png" alt="logo" className="w-[160px] h-[50px] ml-[50px] sm:ml-[10px]" />
                 </a>
             </div>
-            <div className="flex justify-around items-start p-[25px]">
+            <div className="flex justify-around items-start p-[25px] sm:flex-col">
                 {/* Contact */}
                 <div>
                     <div className="h-[80px]">
                         <h4 className="font-bold text-[14px] py-[14px]">Contact</h4>
                     </div>
-                    <div className="grid grid-cols-2 justify-center items-center">
+                    <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center items-center">
                         {
                             contact.map(
-                                (item) => <div className="w-[150px] h-[130px] p-[6px] text-[14px] tracking-[1px]">
+                                (item) => <div className="w-[150px] h-[130px] md:p-0 md:[h-70px] p-[6px] text-[14px] tracking-[1px]">
                                     <h5 className='font-bold'>{item['name']}</h5>
                                     <p>{item['det']}</p>
                                 </div>
@@ -39,8 +39,8 @@ const Footer = () => {
                 
                 {/** Quick Links */}
                 <div>
-                    <div className="h-[80px]">
-                        <h4 className="font-bold text-[14px] py-[14px]">Quick Links</h4>
+                    <div className="h-[80px] sm:h-[40px]">
+                        <h4 className="font-bold text-[14px] py-[14px] sm:py-[5px]">Quick Links</h4>
                     </div>
                     <ul>
                         <li className="py-[4px] tracking-[1px] text-[14px]"><a href="/"><u>Terms and Conditions</u></a></li>
@@ -49,8 +49,8 @@ const Footer = () => {
                 </div>
 
                 {/* Subscription */}
-                <div >
-                    <div className="h-[80px]">
+                <div className='mt-[12px]'>
+                    <div className="h-[80px] sm:h-[50px]">
                         <h4 className="font-bold text-[14px] py-[14px]">Subscription</h4>
                     </div>
                     <p className="text-[14px] tracking-[1px]">
@@ -69,7 +69,7 @@ const Footer = () => {
 
                 {/* Follow */}
                 <div >
-                    <div className="h-[80px]">
+                    <div className="h-[80px] sm:h-[40px]">
                         <h4 className="font-bold text-[14px] py-[14px]">Follow</h4>
                     </div>
                     <p className="text-[14px]">
