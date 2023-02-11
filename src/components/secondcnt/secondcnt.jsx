@@ -4,10 +4,10 @@ import './secondcnt.css';
 const SecondCnt = () => {
 
   return (
-    <div id="cont" className='h-[80vh] w-full grid grid-cols-2'>
+    <div id="cont" className='h-[80vh] w-full flex sm:flex-col sm:h-auto'>
         <div>
-            <div className="px-[20%] py-[20%]">
-                <h1>
+            <div className="px-[20%] py-[20%] sm:p-[12%]">
+                <h1 className="text-[28px]">
                     With the Right Software, Scale your Business Rapidly
                 </h1>
                 <p id='quote'>
@@ -15,8 +15,8 @@ const SecondCnt = () => {
                 </p>
             </div>
         </div>
-        <div className='w-full '>
-            <img src="images/mob.jpg" alt="computer and mobile screen"/>
+        <div className='w-full'>
+            <img src="images/mob.jpg" className="w-full" alt="computer and mobile screen"/>
         </div>
     </div>
   )

@@ -22,5 +22,10 @@ h1 {
     transform: translateX(80px);
     text-align: justify;
     
-    
+}
+
+@media (max-width:768px) {
+  #quote {
+    transform: translateX(0px);
+  }  
 }

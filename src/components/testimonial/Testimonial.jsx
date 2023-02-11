@@ -24,16 +24,16 @@ const Testimonial = () => {
   ];
 
   return (
-    <div className="h-[90vh] w-full">
+    <div className="h-[90vh] w-full sm:h-auto">
       <div className="p-[6%]">
         <h1>
           What Our <span style={{ color: "#ffbe23" }}>Clients</span> Say?
         </h1>
       </div>
-      <div className="flex justify-evenly items-center">
+      <div className="flex justify-evenly items-center sm:flex-wrap ">
         {
             details.map(
-                (item) => <div id="test-card" className="w-[240px] h-[400px]">
+                (item) => <div id="test-card" className="w-[240px] h-[320px] sm:my-[12px]">
                             <div>
                                 {/** boxes */}
                                 <div>

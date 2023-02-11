@@ -3,3 +3,15 @@ h1 {
     font-size:35px;
     letter-spacing: 1px;
 }
+
+#seperate-container {
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+
+@media(max-width:768px) {
+    #seperate-container {
+        display: flex;
+        flex-direction: column;
+    }
+}
