@@ -11,7 +11,7 @@ const Services = () => {
   ];
 
   return (
-    <div className="w-full h-[100vh] sm:h-auto">
+    <div className="w-full h-auto p-[5%] sm:h-auto" id="#products">
       <div className="p-[5%]">
         <div>
           <h1>
@@ -24,15 +24,15 @@ const Services = () => {
                 and pay online.
             </p>
           </div>
-          <div className="flex justify-center items-center py-[18px] sm:flex-wrap">
+          <div className="flex justify-start items-start py-[18px] sm:flex-wrap">
             {/* <div></div>
             <div></div>
             <div></div>
             <div></div> */}
             {
                 options.map((item) => 
-                    <div id="card" className='my-[15px] p-[8px] w-[250px] h-[170px] sm:h-[140px] sm:my-[5px]'>
-                        <h3 className='text-xl font-bold tracking-[1px] text-[20px] p-[8px] h-[80px] sm:h-[60px]' >{item['heading']}</h3>
+                    <div id="card" className='mr-[20px] p-[8px] w-[250px] h-[170px] sm:h-[130px] sm:mr-[12px] sm:my-[12px]'>
+                        <h3 className='text-xl font-bold tracking-[1px] text-[20px] p-[8px] h-[80px] sm:h-[75px]' >{item['heading']}</h3>
                         <p>{item['desc']}</p>
                     </div>
                 )

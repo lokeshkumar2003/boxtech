@@ -4,15 +4,15 @@ import React from 'react';
 const Footer = () => {
 
   const contact = [
-    {name:'General Inquiries:',det:8336801389},
-    {name:'Sales:',det:'miuractech@gmail.com'},
-    {name:'Address:',det:'Bangalore , Karnataka'},
-    {name:'Customer Care:',det:'info@miurac.com'}
+    {name:'General Inquiries:',det:8336801389,link:'tel:+918336801389'},
+    {name:'Sales:',det:'miuractech@gmail.com' , link:'mailto:miuractech@gmail.com'},
+    {name:'Address:',det:'Bangalore , Karnataka',link:'/'},
+    {name:'Customer Care:',det:'info@miurac.com',link:'mailto:info@miurac.com'}
   ];
 
   
   return (
-    <div>
+    <div id="footer">
         <div className="h-auto bg-[#FFBF23] w-full">
             <div className="p-[15px]">
                 <a href="/">
@@ -30,7 +30,9 @@ const Footer = () => {
                             contact.map(
                                 (item) => <div className="w-[150px] h-[130px] md:p-0 md:[h-70px] p-[6px] text-[14px] tracking-[1px]">
                                     <h5 className='font-bold'>{item['name']}</h5>
-                                    <p>{item['det']}</p>
+                                    <u><a href={item.link} target="_blank" rel="noopener noreferrer">
+                                        <p className='break-words'>{item['det']}</p>
+                                    </a></u>
                                 </div>
                             )
                         }
@@ -49,7 +51,7 @@ const Footer = () => {
                 </div>
 
                 {/* Subscription */}
-                <div className='mt-[12px]'>
+                <div>
                     <div className="h-[80px] sm:h-[50px]">
                         <h4 className="font-bold text-[14px] py-[14px]">Subscription</h4>
                     </div>
