@@ -45,8 +45,8 @@ const Footer = () => {
                         <h4 className="font-bold text-[14px] py-[14px] sm:py-[5px]">Quick Links</h4>
                     </div>
                     <ul>
-                        <li className="py-[4px] tracking-[1px] text-[14px]"><a href="/"><u>Terms and Conditions</u></a></li>
-                        <li className="py-[4px] tracking-[1px] text-[14px]"><a href="/"><u>Privacy Policy</u></a></li>
+                        <li className="py-[4px] tracking-[1px] text-[14px]"><a href="/terms-conditions"><u>Terms and Conditions</u></a></li>
+                        <li className="py-[4px] tracking-[1px] text-[14px]"><a href="/privacy-policy"><u>Privacy Policy</u></a></li>
                     </ul>
                 </div>
 
@@ -83,7 +83,7 @@ const Footer = () => {
 
         </div>
         <div className="h-auto p-[8px] bg-black">
-            <h6 className="text-white text-[12px] tracking-[1px] text-center">© 2035 by boxtech. Powered and secured by <a href="https://miurac.com"><u>miurac</u></a></h6>
+            <h6 className="text-white text-[12px] tracking-[1px] text-center">© 2023 by boxtech. Powered and secured by <a href="https://miurac.com"><u>miurac</u></a></h6>
         </div>
     </div>
   )

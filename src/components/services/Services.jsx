@@ -12,7 +12,7 @@ const Services = () => {
 
   return (
     <div className="w-full h-auto p-[5%] sm:h-auto" id="#products">
-      <div className="p-[5%]">
+      <div className="p-[6%]">
         <div>
           <h1>
             What <span style={{ color: "#ffbe23" }}>We Offer?</span>
@@ -31,7 +31,7 @@ const Services = () => {
             <div></div> */}
             {
                 options.map((item) => 
-                    <div id="card" className='mr-[20px] p-[8px] w-[250px] h-[170px] sm:h-[130px] sm:mr-[12px] sm:my-[12px]'>
+                    <div id="card" className='mr-[20px] p-[8px] w-[270px] h-[170px] sm:h-[130px] sm:mr-[12px] sm:my-[12px]'>
                         <h3 className='text-xl font-bold tracking-[1px] text-[20px] p-[8px] h-[80px] sm:h-[75px]' >{item['heading']}</h3>
                         <p>{item['desc']}</p>
                     </div>
