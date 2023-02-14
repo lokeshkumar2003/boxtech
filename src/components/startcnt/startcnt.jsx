@@ -23,12 +23,12 @@ const StartCnt = () => {
                 <button className="bg-[#edbd0f] p-[10px] my-[20px] text-white sm:w-full">
                     Start for free
                 </button>
-                <div className="flex my-[8px] justify-start items-center flex-wrap sm:h-[200px] sm:w-[230px]">
+                <div className="flex my-[8px] justify-center items-center flex-wrap sm:h-[200px] sm:w-[230px]">
                         {
                             adv.names.map((item) =>
-                                <div className="flex text-center mx-[15px] justify-start items-center">
-                                    <div className='p-[10px] bg-black'>{item.icon}</div>
-                                    <h2 className="text-[12px] tracking-[1px]">{item.name}</h2>
+                                <div className="flex text-left mx-[15px] my-[15px] justify-start items-center">
+                                    <div className='p-[4px] bg-black'>{item.icon}</div>
+                                    <h2 className="text-[14px] tracking-[1px] ml-[20px]">{item.name}</h2>
                                 </div>
                             )
                         }
