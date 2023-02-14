@@ -33,7 +33,7 @@ const CreativeCnt = () => {
                 </p>
             </div>
         </div>
-        <div className="flex my-[8px] justify-start items-center w-[70%] flex-wrap sm:h-[200px] sm:w-[230px]">
+        <div className="flex my-[8px] justify-start items-center w-[70%] flex-wrap sm:h-[200px] sm:w-[100%]">
                         {
                             adv.names.map((item) =>
                                 <div className="flex text-left mt-[10px] px-[10px] justify-start items-center">
