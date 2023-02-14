@@ -8,9 +8,9 @@ const StartCnt = () => {
 
   const adv = {
     names: [
-        {icon: <LockOpenIcon /> ,name:'Speed & Security'},
-        {icon: <AllOutIcon />,name:'Flexibility and Scalability'},
-        {icon: <AddLinkIcon />,name:'Automated Payments'}
+        {icon: <LockOpenIcon style={{'color':'white'}}/> ,name:'Speed & Security'},
+        {icon: <AllOutIcon style={{'color':'white'}}/>,name:'Flexibility and Scalability'},
+        {icon: <AddLinkIcon style={{'color':'white'}}/>,name:'Automated Payments'}
     ]
   }
 
@@ -27,7 +27,7 @@ const StartCnt = () => {
                         {
                             adv.names.map((item) =>
                                 <div className="flex text-center mx-[15px] justify-start items-center">
-                                    {item.icon}
+                                    <div className='p-[10px] bg-black'>{item.icon}</div>
                                     <h2 className="text-[12px] tracking-[1px]">{item.name}</h2>
                                 </div>
                             )
