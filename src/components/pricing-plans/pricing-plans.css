@@ -1,0 +1,24 @@
+.points li:before {
+    content: '✓';
+  }
+
+.badge {
+    /* position: absolute; */
+  left: 40%;
+  right: 0;
+  transform: translateY(-20px);
+  margin: 0 auto;
+  width: 100px;
+  border: 1px solid black;
+}
+
+@media (max-width:768px) {
+    .badge {
+        /* position: absolute; */
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: 100px;
+    }
+    
+}
