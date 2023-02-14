@@ -23,7 +23,7 @@ const CreativeCnt = () => {
         <img className="w-full h-full" src="images/creative-section.png" alt="phot" />
       </div>
       <div className="flex flex-col justify-center items-center">
-        <div id="desc-card" className="w-[550px]">
+        <div id="desc-card">
             <h1 className="w-[100%] text-[32px] sm:text-[28px] sm:p-[5%]">Built for <span style={{'color':'#ffbe23'}}>Businesses</span>, by <span style={{'color':'#ffbe23'}}>Creatives.</span></h1>
             <div className="w-[60%] my-[18px] sm:w-[80%] sm:p-[5%] sm:my-[0]" >
                 <p className="text-justify">
@@ -33,7 +33,7 @@ const CreativeCnt = () => {
                 </p>
             </div>
         </div>
-        <div className="flex my-[8px] justify-start items-center w-[70%] flex-wrap sm:h-[200px] sm:w-[100%]">
+        <div className="flex my-[8px] justify-start items-center w-[70%] flex-wrap sm:h-[200px] sm:w-[90%] sm:mx-auto">
                         {
                             adv.names.map((item) =>
                                 <div className="flex text-left mt-[10px] px-[10px] justify-start items-center">
