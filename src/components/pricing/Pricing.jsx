@@ -3,7 +3,7 @@ import './pricing.css';
 
 const Pricing = () => {
   return (
-    <div className='h-[90vh] w-full grid grid-cols-2 bg-[#F6F5F5] sm:h-auto sm:flex sm:flex-col' id="pricing">
+    <div className='h-auto w-full grid grid-cols-2 bg-[#F6F5F5] sm:h-auto sm:flex sm:flex-col' id="pricing">
         <div className='flex flex-col justify-center items-center sm:p-[5%]'>
             <div id='con1'>
                 <h1 className='my-[18px] w-[70%] sm:w-[100%] sm:text-[28px]'>Explore our <span style={{'color':'#FFBF23'}}>Pricing</span> Options</h1>
