@@ -17,9 +17,9 @@ const StartCnt = () => {
   return (
     <div id="seperate-container" className="h-[800px] w-[100%] sm:h-auto">
         <div>
-            <div className="my-[20%] mx-[18%] sm:mx-[10%] sm:my-[15%]">
-                <h1 className="font-bold text-[35px] tracking-[1px] sm:text-[28px]">Best Packing & Moving software for your business!</h1>
-                <p className="text-justify sm:py-[12px]">We provide an effective and powerful way to manage your operations like pickup scheduling, quotation generation, pricing, customer review, payment, etc.</p>
+            <div className="my-[10%] mx-[12%] sm:mx-[10%] sm:my-[15%]">
+                <h1 className="font-bold text-[38px] tracking-[1px] sm:text-[28px]">Best Packing & Moving software for your business!</h1>
+                <p className="text-justify sm:py-[12px] tracking-[1px] p-[10px]">We provide an effective and powerful way to manage your operations like pickup scheduling, quotation generation, pricing, customer review, payment, etc.</p>
                 <button className="bg-[#edbd0f] p-[10px] my-[20px] text-white sm:w-full">
                     Start for free
                 </button>
