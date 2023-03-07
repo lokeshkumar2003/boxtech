@@ -7,9 +7,9 @@ const Pricing = () => {
         <div className='flex flex-col justify-center items-center sm:p-[5%]'>
             <div id='con1'>
                 <h1 className='my-[18px] w-[70%] sm:w-[100%] sm:text-[28px]'>Explore our <span style={{'color':'#FFBF23'}}>Pricing</span> Options</h1>
-                <p className='w-[80%]'>Simple plans that grow with your business. No contracts. No Setup fees.</p>
+                <p className='w-[80%] sm:w-full'>Simple plans that grow with your business. No contracts. No Setup fees.</p>
                 <a href='/'>
-                    <button className='bg-black px-[20px] py-[10px] my-[20px] text-white rounded-[5px] tracking-[1px] sm:block sm:mx-auto'>
+                    <button className='bg-black px-[20px] py-[10px] my-[20px] text-white rounded-[5px] tracking-[1px] '>
                         See More
                     </button>
                 </a>
