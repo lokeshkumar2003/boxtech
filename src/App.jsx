@@ -4,6 +4,7 @@ import './App.css';
 import { BrowserRouter as Router } from "react-router-dom";
 import RouteNames from './components/routes/Routes';
 import { Navbar } from './components/navbar/Navbar';
+// import OverlayCnt from './components/overlay/OverlayCnt';
 
 function App() {
   return (
@@ -12,7 +13,6 @@ function App() {
         <Navbar />
         <RouteNames />
        </Router>
-      {/* <HomePage /> */}
     </div>
   );
 }

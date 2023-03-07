@@ -19,16 +19,16 @@ const StartCnt = () => {
         <div>
             <div className="my-[10%] mx-[12%] sm:mx-[10%] sm:my-[15%]">
                 <h1 className="font-bold text-[38px] tracking-[1px] sm:text-[28px]">Best Packing & Moving software for your business!</h1>
-                <p className="text-justify sm:py-[12px] tracking-[1px] p-[10px]">We provide an effective and powerful way to manage your operations like pickup scheduling, quotation generation, pricing, customer review, payment, etc.</p>
+                <p className="text-justify sm:py-[12px] tracking-[1px] p-[10px] sm:p-0">We provide an effective and powerful way to manage your operations like pickup scheduling, quotation generation, pricing, customer review, payment, etc.</p>
                 <button className="bg-[#edbd0f] p-[10px] my-[20px] text-white sm:w-full">
                     Start for free
                 </button>
-                <div className="flex my-[8px] justify-center items-center flex-wrap sm:h-[200px] sm:w-[230px]">
+                <div className="flex my-[8px] justify-center items-center flex-wrap sm:h-[200px] sm:w-auto">
                         {
                             adv.names.map((item) =>
-                                <div className="flex text-left mx-[15px] my-[15px] justify-start items-center">
+                                <div className="flex text-left mx-[15px] my-[15px] w-[200px] justify-start items-center">
                                     <div className='p-[4px] bg-black'>{item.icon}</div>
-                                    <h2 className="text-[14px] tracking-[1px] ml-[20px]">{item.name}</h2>
+                                    <h2 className="text-[14px] tracking-[1px] ml-[8px]">{item.name}</h2>
                                 </div>
                             )
                         }

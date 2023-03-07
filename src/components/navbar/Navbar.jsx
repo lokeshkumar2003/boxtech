@@ -2,6 +2,12 @@ import React from 'react';
 // import { Menu } from '@mui/material';
 import './navbar.css';
 import { useState } from 'react';
+import { CloseRounded } from '@mui/icons-material';
+import Login from '../auth/Login';
+import SignUp from '../auth/SignUp';
+import OverlayCnt from '../overlay/OverlayCnt';
+
+
 export const Navbar = () => {
 
   const options = [
@@ -14,6 +20,18 @@ export const Navbar = () => {
 
 
   const [isNavExpanded, setIsNavExpanded] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
+
+  const handleClick = () => {
+    setShowOverlay(!showOverlay);
+  }
+
+  
+
+  const closeOverlay = () => {
+    setShowOverlay(false);
+  }
+  
 
 
   return (
@@ -42,20 +60,33 @@ export const Navbar = () => {
             />
           </svg>
         </button>
+      {showOverlay && 
+        <OverlayCnt onClickFunction={closeOverlay}/>
+      }
+
         <div
           className={
             isNavExpanded ? "navigation-menu expanded" : "navigation-menu"
           }
         >
-          <ul className='mr-[25px] sm:mr-[0]'>
-            {
-              options.map((item) => (
-                <li>
-                  <a href={item.link} className='text-[16px] sm:text-[16px]'>
-                    {item.name}
-                  </a>
-                </li>
-              ))}
+          <ul className='mr-[25px] sm:mr-[0]'>            
+              <li>
+                <a href="/" className='text-[16px] sm:text-[16px]'>Home</a>
+              </li>
+              <li>
+                <a href="#products" className='text-[16px] sm:text-[16px]'>Product</a>
+              </li>
+              <li>
+                <a href="/pricing-plans" className='text-[16px] sm:text-[16px]'>Pricing Plans</a>
+              </li>
+              <li>
+                <a href="#footer" className='text-[16px] sm:text-[16px]'>Contact</a>
+              </li>
+              <li className='cursor-pointer'>
+                <button onClick={handleClick}>
+                    Login
+                </button>
+              </li>
             
           </ul>
         </div>

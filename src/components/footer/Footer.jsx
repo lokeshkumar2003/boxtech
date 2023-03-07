@@ -23,13 +23,13 @@ const Footer = () => {
                 {/* Contact */}
                 <div>
                     <div className="h-[80px]">
-                        <h4 className="font-bold text-[14px] py-[14px]">Contact</h4>
+                        <h4 className="font-bold text-[18px] py-[14px]">Contact</h4>
                     </div>
                     <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center items-center">
                         {
                             contact.map(
-                                (item) => <div className="w-[150px] h-[130px] md:p-0 md:[h-70px] p-[6px] text-[14px] tracking-[1px]">
-                                    <h5 className='font-bold'>{item['name']}</h5>
+                                (item) => <div className="w-[150px] h-[130px] md:p-0 md:[h-70px] sm:p-0 sm:h-[80px] sm:w-full p-[6px] text-[14px] tracking-[1px]">
+                                    <h5 className=''>{item['name']}</h5>
                                     <u><a href={item.link} target="_blank" rel="noopener noreferrer">
                                         <p className='break-words'>{item['det']}</p>
                                     </a></u>
