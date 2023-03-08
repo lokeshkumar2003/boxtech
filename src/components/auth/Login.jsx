@@ -1,10 +1,29 @@
 import { MailOutline } from '@mui/icons-material';
 import React from 'react';
 import { TextField } from '@mui/material';
+import { auth , provider } from '../firebase/firebase';
+import { signInWithPopup } from 'firebase/auth';
+import { useEffect } from 'react';
+
 
 const Login = (props) => {
 
     const [showEmail , setShowEmail] = React.useState(false);
+    const [value , setValue] = React.useState('');
+
+    const handleClick = () => {
+        signInWithPopup(auth , provider)
+            .then((data) => {
+                setValue(data.user.email);
+                localStorage.setItem('email',data.user.email)
+            })
+    };
+
+    useEffect(
+        () => {
+            setValue(localStorage.getItem('email'))
+        }
+    );
 
 
 
@@ -46,7 +65,7 @@ const Login = (props) => {
                                     <button className='p-3'>
                                         <img src="images/icons/fb-icon.png" alt='fb icon' className='w-[40px] h-[40px]'/>
                                     </button>
-                                    <button className='p-3'>
+                                    <button className='p-3' onClick = {handleClick}>
                                         <img src="images/icons/google-icon.png" alt='google icon' className='w-[40px] h-[40px]'/>
                                     </button>
                                 </div>
@@ -61,11 +80,13 @@ const Login = (props) => {
                                 <p className='p-2'>Login with Facebook</p>
                             </div>
                             </button>
-                            <button className='bg-[#6795f0] text-white text-[14px] p-2 my-3 rounded-[5px]'>
-                            <div className='flex items-center justify-center w-[200px] tracking-[1px]'>
-                                <img src="images/icons/google-icon.png" alt='google icon' className='w-[25px] h-[25px]'/>
-                                <p className='p-2'>Login with Google</p>
-                            </div>
+                            <button 
+                                onClick = {handleClick}
+                                className='bg-[#6795f0] text-white text-[14px] p-2 my-3 rounded-[5px]'>
+                                <div className='flex items-center justify-center w-[200px] tracking-[1px]'>
+                                    <img src="images/icons/google-icon.png" alt='google icon' className='w-[25px] h-[25px]'/>
+                                    <p className='p-2'>Login with Google</p>
+                                </div>
                             </button>
                         </div>
                         <div>
