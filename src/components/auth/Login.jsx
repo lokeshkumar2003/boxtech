@@ -4,8 +4,8 @@ import { TextField } from '@mui/material';
 import { auth , provider } from '../firebase/firebase';
 import { getAuth, signInWithPopup , signInWithEmailAndPassword } from 'firebase/auth';
 import { useEffect } from 'react';
-import HomePage from '../homepage/HomePage';
-import { Navbar } from '../navbar/Navbar';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const Login = (props) => {
@@ -26,11 +26,11 @@ const Login = (props) => {
     };
 
     const handleLogin = () => {
-        signInWithEmailAndPassword(email , password)
+        signInWithEmailAndPassword(auth , email , password)
             .then((data) => {
                 setValue(data.user.email);
                 localStorage.setItem('email',data.user.email)
-            })
+            });
     };
 
     useEffect(
