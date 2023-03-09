@@ -1,15 +1,53 @@
 import { MailOutline } from '@mui/icons-material';
 import React from 'react';
 import { TextField } from '@mui/material';
+import { auth , provider } from '../firebase/firebase';
+import { getAuth, signInWithPopup , signInWithEmailAndPassword } from 'firebase/auth';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const Login = (props) => {
 
     const [showEmail , setShowEmail] = React.useState(false);
+    const [value , setValue] = React.useState('');
+    const [email , setEmailValue] = React.useState('');
+    const [password , setPasswordValue] = React.useState('');
+
+    const auth = getAuth();
+
+    const handleClick = () => {
+        signInWithPopup(auth , provider)
+            .then((data) => {
+                setValue(data.user.email);
+                localStorage.setItem('email',data.user.email)
+            })
+    };
+
+    const handleLogin = () => {
+        signInWithEmailAndPassword(auth , email , password)
+            .then((data) => {
+                setValue(data.user.email);
+                localStorage.setItem('email',data.user.email)
+            });
+    };
+
+    useEffect(
+        () => {
+            setValue(localStorage.getItem('email'))
+        }
+    );
 
 
 
   return (
     <div>
+        {/* {
+            value 
+            ? <Navbar email={value} />
+            : <Navbar />
+        } */}
         <h1 className='text-center text-[35px] p-3'>Login</h1>
               <h3 className='text-[16px] text-center'>
                 <span>Not a Member? </span>
@@ -27,6 +65,7 @@ const Login = (props) => {
                                     label="Email" 
                                     variant="outlined" 
                                     name='email'
+                                    onChange={(e) => setEmailValue(e.target.value)}
                                 />
                             </div>
                             <div className='m-2'>
@@ -35,9 +74,12 @@ const Login = (props) => {
                                     variant="outlined" 
                                     name='password'
                                     type="password"
+                                    onChange={(e) => setPasswordValue(e.target.value)}
                                 />
                             </div>
-                            <button className='bg-[orange] w-full mx-2 rounded-[5px] p-2 text-white my-3'>
+                            <button 
+                                onClick = {handleLogin}
+                                className='bg-[orange] w-full mx-2 rounded-[5px] p-2 text-white my-3'>
                                 Login
                             </button>
                             <div>
@@ -46,7 +88,7 @@ const Login = (props) => {
                                     <button className='p-3'>
                                         <img src="images/icons/fb-icon.png" alt='fb icon' className='w-[40px] h-[40px]'/>
                                     </button>
-                                    <button className='p-3'>
+                                    <button className='p-3' onClick = {handleClick}>
                                         <img src="images/icons/google-icon.png" alt='google icon' className='w-[40px] h-[40px]'/>
                                     </button>
                                 </div>
@@ -61,11 +103,13 @@ const Login = (props) => {
                                 <p className='p-2'>Login with Facebook</p>
                             </div>
                             </button>
-                            <button className='bg-[#6795f0] text-white text-[14px] p-2 my-3 rounded-[5px]'>
-                            <div className='flex items-center justify-center w-[200px] tracking-[1px]'>
-                                <img src="images/icons/google-icon.png" alt='google icon' className='w-[25px] h-[25px]'/>
-                                <p className='p-2'>Login with Google</p>
-                            </div>
+                            <button 
+                                onClick = {handleClick}
+                                className='bg-[#6795f0] text-white text-[14px] p-2 my-3 rounded-[5px]'>
+                                <div className='flex items-center justify-center w-[200px] tracking-[1px]'>
+                                    <img src="images/icons/google-icon.png" alt='google icon' className='w-[25px] h-[25px]'/>
+                                    <p className='p-2'>Login with Google</p>
+                                </div>
                             </button>
                         </div>
                         <div>

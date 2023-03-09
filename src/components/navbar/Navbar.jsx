@@ -6,7 +6,10 @@ import { CloseRounded } from '@mui/icons-material';
 import Login from '../auth/Login';
 import SignUp from '../auth/SignUp';
 import OverlayCnt from '../overlay/OverlayCnt';
-
+import { useEffect } from 'react';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../firebase/firebase';
+import { Menu , MenuItem } from '@mui/material';
 
 export const Navbar = () => {
 
@@ -21,6 +24,9 @@ export const Navbar = () => {
 
   const [isNavExpanded, setIsNavExpanded] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
+  const [userDetails , setUserDetails] = useState(null);
+
+  const auth = getAuth();
 
   const handleClick = () => {
     setShowOverlay(!showOverlay);
@@ -31,7 +37,18 @@ export const Navbar = () => {
   const closeOverlay = () => {
     setShowOverlay(false);
   }
-  
+
+  const handleLogout = () => {
+    auth.signOut();
+    setUserDetails(null);
+  }
+
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+        setUserDetails(user);
+    })
+  });
 
 
   return (
@@ -82,11 +99,29 @@ export const Navbar = () => {
               <li>
                 <a href="#footer" className='text-[16px] sm:text-[16px]'>Contact</a>
               </li>
-              <li className='cursor-pointer'>
-                <button onClick={handleClick}>
-                    Login
-                </button>
-              </li>
+              
+              {
+                userDetails   
+                    ? <div>
+                          <li>{userDetails.email}</li> 
+                          <li className='cursor-pointer'>
+                            <button className='text-[16px] sm:text-[16px]' onClick={handleLogout}>
+                                Logout
+                            </button>
+                          </li>
+                      </div>
+                    : <li className='cursor-pointer'>
+                        <button className='text-[16px] sm:text-[16px]'onClick={handleClick}>
+                            Login
+                        </button>
+                      </li>
+
+              }
+              {/* {
+                props 
+                ? <li>{props.email}</li>
+                : ''
+              } */}
             
           </ul>
         </div>
