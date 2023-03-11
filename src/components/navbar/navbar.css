@@ -2,11 +2,18 @@
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     height: 80px;
     width: 100%;
     padding: 0.5rem 0rem;
     color: black;
     
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
   }
   
   .brand-name {
@@ -68,7 +75,7 @@
       top: 60px;
       left: 0;
       width: 100%;
-      height: calc(100vh - 60px);
+      height: 100vh;
       background-color: white;
       border-top: 1px solid black;
       display: none;

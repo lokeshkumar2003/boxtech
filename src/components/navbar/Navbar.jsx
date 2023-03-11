@@ -1,32 +1,27 @@
 import React from 'react';
-// import { Menu } from '@mui/material';
 import './navbar.css';
 import { useState } from 'react';
-import { CloseRounded } from '@mui/icons-material';
-import Login from '../auth/Login';
-import SignUp from '../auth/SignUp';
 import OverlayCnt from '../overlay/OverlayCnt';
 import { useEffect } from 'react';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../firebase/firebase';
-import { Menu , MenuItem } from '@mui/material';
+import { getAuth } from 'firebase/auth';
+import { CloseRounded } from '@mui/icons-material';
+import {  MenuItem } from '@mui/material';
+import { Link } from 'react-router-dom';
+// import Select from '@mui/material';
+import Select from '@mui/material/Select';
 
 export const Navbar = () => {
-
-  const options = [
-      {name:'Home' , link:'/'},
-      {name:'Product' , link:'#products'},
-      {name:'Pricing Plans' , link:'/pricing-plans'},
-      {name:'Contact' , link:'#footer'},
-      {name:'Login',link:'/'},
-];
 
 
   const [isNavExpanded, setIsNavExpanded] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const [userDetails , setUserDetails] = useState(null);
 
+
   const auth = getAuth();
+
+  
+
 
   const handleClick = () => {
     setShowOverlay(!showOverlay);
@@ -49,6 +44,7 @@ export const Navbar = () => {
         setUserDetails(user);
     })
   });
+
 
 
   return (
@@ -86,7 +82,13 @@ export const Navbar = () => {
             isNavExpanded ? "navigation-menu expanded" : "navigation-menu"
           }
         >
-          <ul className='mr-[25px] sm:mr-[0]'>            
+          <ul className='mr-[25px] sm:mr-[0] items-center justify-center'>
+            {/* <button
+              className="absolute top-[20px] right-[20px] invisible sm:visible"
+              onClick={() => {
+                setIsNavExpanded(!isNavExpanded);
+              }}
+            ><CloseRounded style={{'fontSize':'40px'}}/></button>    */}
               <li>
                 <a href="/" className='text-[16px] sm:text-[16px]'>Home</a>
               </li>
@@ -99,30 +101,57 @@ export const Navbar = () => {
               <li>
                 <a href="#footer" className='text-[16px] sm:text-[16px]'>Contact</a>
               </li>
-              
               {
                 userDetails   
-                    ? <div>
-                          <li>{userDetails.email}</li> 
-                          <li className='cursor-pointer'>
-                            <button className='text-[16px] sm:text-[16px]' onClick={handleLogout}>
-                                Logout
-                            </button>
-                          </li>
+                    ? <div style={{'display':'flex' , 'alignItems':'center','justifyContent':'center'}}>               
+                            <li>
+                                  <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    style={{
+                                      backgroundImage: `url(${userDetails.photoURL})`,
+                                      backgroundSize : 'cover',
+                                      backgroundPosition:'center',
+                                      height:'35px',
+                                      width:'35px',
+                                      borderRadius:'50%',
+                                    }}
+                                    
+                                  >
+                                    {/* <img src={userDetails.photoURL} alt='profile pic' className='cursor-pointer rounded-[50%] w-full h-full'/> */}
+                                    <MenuItem className='text-[16px]'>
+                                      <Link to='/account'>
+                                          My Account
+                                      </Link>
+                                    </MenuItem>
+                                    <MenuItem className='text-[16px]'>
+                                      <Link to='/subscription'  >
+                                          My Subscription
+                                      </Link>
+                                    </MenuItem>
+                                    <MenuItem>
+                                    <li onClick={handleLogout}>
+                                      <button className='text-[16px]' onClick={handleLogout}>
+                                          Logout
+                                      </button>
+                                    </li>
+                                    </MenuItem>
+                                  </Select>
+                                
+                            </li>
+                        
                       </div>
                     : <li className='cursor-pointer'>
                         <button className='text-[16px] sm:text-[16px]'onClick={handleClick}>
                             Login
                         </button>
                       </li>
-
-              }
-              {/* {
-                props 
-                ? <li>{props.email}</li>
-                : ''
-              } */}
-            
+              }   
+              <li>
+                <button className='bg-[#edbd0f] color-white p-2 rounded-[5px] text-[16px] text-white w-[130px]'>
+                    Get Started  
+                </button>  
+              </li>         
           </ul>
         </div>
       </nav>
