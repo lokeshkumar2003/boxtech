@@ -125,7 +125,7 @@ export const Navbar = () => {
                                       </Link>
                                     </MenuItem>
                                     <MenuItem className='text-[16px]'>
-                                      <Link to='/subscription'  >
+                                      <Link to='/subscriptions'  >
                                           My Subscription
                                       </Link>
                                     </MenuItem>

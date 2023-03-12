@@ -1,15 +1,9 @@
 import React from 'react';
-// import { auth } from '../firebase/firebase';
-import { useState , useEffect} from 'react';
+import { useState , useEffect } from 'react';
 import { getAuth } from 'firebase/auth';
 import { TextField } from '@mui/material';
-// import Link from '@mui/material';
 
-
-const MyAccount = () => {
-
-
-    
+const MySubscriptions = () => {
     const [userDetails , setUserDetails] = useState(null);
     // const [accountSection , setAccountSection] = useState(false);
 
@@ -49,12 +43,12 @@ const MyAccount = () => {
                             </div>
                         </div>
                         <div className='flex'>
-                            <div className='border-b-2 border-black m-2 p-2'>
+                            <div className='m-2 p-2'>
                                 <a href="/account">
                                     My Account
                                 </a>
                             </div>
-                            <div className='m-2 p-2'>
+                            <div className='m-2 border-b-2 border-black p-2'>
                                 <a href="/subscriptions">
                                     My Subscriptions
                                 </a>
@@ -141,7 +135,7 @@ const MyAccount = () => {
                 </div>
             </div>)
             : <div className='text-center'>
-                Loading
+                Loading....
             </div>
         }
         </div>
@@ -149,4 +143,4 @@ const MyAccount = () => {
     )
 }
 
-export default MyAccount
+export default MySubscriptions
