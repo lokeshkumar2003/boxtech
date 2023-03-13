@@ -2,6 +2,7 @@ import React from 'react';
 // import { auth } from '../firebase/firebase';
 import { useState , useEffect} from 'react';
 import { getAuth } from 'firebase/auth';
+import { Link } from 'react-router-dom';
 import { TextField } from '@mui/material';
 // import Link from '@mui/material';
 
@@ -28,8 +29,8 @@ const MyAccount = () => {
         {
             userDetails 
             ?  (<div>
-                <div className='w-[80%] mx-auto'>
-                    <div className='w-[80%] mx-auto'>
+                <div className='w-[80%] mx-auto sm:w-[95%]'>
+                    <div className='w-[80%] mx-auto sm:w-full'>
                         { /* Top banner */}
                         <div className='bg-[#edbd0f] h-[300px] flex flex-col justify-end'>
                             <div className='flex items-end w-[80%] mx-auto p-3'>
@@ -50,14 +51,14 @@ const MyAccount = () => {
                         </div>
                         <div className='flex'>
                             <div className='border-b-2 border-black m-2 p-2'>
-                                <a href="/account">
+                                <Link to="/account">
                                     My Account
-                                </a>
+                                </Link>
                             </div>
                             <div className='m-2 p-2'>
-                                <a href="/subscriptions">
+                                <Link to="/subscriptions">
                                     My Subscriptions
-                                </a>
+                                </Link>
                             </div>
                         </div>
                         {/* <div>
@@ -68,7 +69,7 @@ const MyAccount = () => {
                                 MySubscriptions
                             </button>
                         </div> */}
-                        <div className='my-4 border-b-2 border-black flex justify-between items-center'>
+                        <div className='my-4 border-b-2 border-black flex sm:flex-wrap justify-between items-center'>
                             <div>
                                 <h1 className='text-[20px] p-2'>My Account</h1>
                                 <p className='text-[16px] p-2'>View and edit your personal info below</p>

@@ -6,6 +6,7 @@ import PrivacyPolicy from "../privacy-policy/PrivacyPolicy";
 import MyAccount from "../myaccount/MyAccount";
 import MySubscriptions from "../myaccount/MySubscriptions";
 import Checkout from "../checkout/Checkout";
+import CheckoutPremium from "../checkout/CheckoutPremium";
 
 
 const RouteNames = () => {
@@ -18,6 +19,7 @@ const RouteNames = () => {
             <Route path="/account" element={<MyAccount />} />
             <Route path="/subscriptions" element={<MySubscriptions />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/checkout-premium" element={<CheckoutPremium />} />
         </Routes >
     );
 }

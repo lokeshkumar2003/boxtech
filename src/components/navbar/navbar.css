@@ -64,7 +64,7 @@
     background-color: #2642af;
   }
   
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 672px) {
     .hamburger {
       display: block;
     }

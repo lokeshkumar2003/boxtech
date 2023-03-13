@@ -50,9 +50,9 @@ export const Navbar = () => {
   return (
     <div className='pl-[60px] pr-[60px] sm:pl-0 sm:pr-0'>
       <nav className="navigation" >
-        <a href="/" className="brand-name" >
+        <Link to="/" className="brand-name" >
           <img src="images/logo.png" alt="logo" className="h-[40px] w-[140px] ml-[25px] sm:ml-[0px]"/>
-        </a>
+        </Link>
         <button
           className="hamburger"
           onClick={() => {
@@ -90,16 +90,16 @@ export const Navbar = () => {
               }}
             ><CloseRounded style={{'fontSize':'40px'}}/></button>    */}
               <li>
-                <a href="/" className='text-[16px] sm:text-[16px]'>Home</a>
+                <Link to="/" className='text-[16px] sm:text-[16px]'>Home</Link>
               </li>
               <li>
-                <a href="#products" className='text-[16px] sm:text-[16px]'>Product</a>
+                <Link to="#products" className='text-[16px] sm:text-[16px]'>Product</Link>
               </li>
               <li>
-                <a href="/pricing-plans" className='text-[16px] sm:text-[16px]'>Pricing Plans</a>
+                <Link to="/pricing-plans" className='text-[16px] sm:text-[16px]'>Pricing Plans</Link>
               </li>
               <li>
-                <a href="#footer" className='text-[16px] sm:text-[16px]'>Contact</a>
+                <Link to="#footer" className='text-[16px] sm:text-[16px]'>Contact</Link>
               </li>
               {
                 userDetails   
