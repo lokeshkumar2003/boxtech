@@ -3,7 +3,7 @@ import { getAuth } from 'firebase/auth';
 import { useEffect , useState } from 'react';
 import Footer from '../footer/Footer';
 import { collection , doc  } from "firebase/firestore"; 
-import { setDoc } from 'firebase/firestore';
+import { setDoc , getDoc } from 'firebase/firestore';
 // import { db } from '../firebase/firebase';
 import { db } from '../firebase/firebase';
 import { useNavigate } from 'react-router-dom';
@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 const Checkout = () => {
     const [userDetails , setUserDetails] = useState(null);
     const navigate = useNavigate();
+    const [subscriptions , setSubscriptions] = useState([]);
 
     const auth = getAuth();
 
@@ -27,18 +28,36 @@ const Checkout = () => {
         const year = new Date().getFullYear();
         
         try {
-            await setDoc(doc(db,'subscriptions' , userDetails.email),{
-                plan : 'Free',
-                date: `${day}-${month}-${year}`,
-                validity: `${day}-${month+3}-${year}`
-            });
-            alert('Plan Subscribed successfully')
-            navigate('/')
+            
+            var docRef = doc(db, "subscriptions", userDetails.email);
+            var docu = docRef.get();
+            if(docu && subscriptions){
+                alert('Already plan purchased');
+            } else {
+                await setDoc(doc(db,'subscriptions' , userDetails.email),{
+                    plan : 'Free',
+                    date: `${day}-${month}-${year}`,
+                    validity: `${day}-${month+3}-${year}`,
+                    status: 'active'
+                });
+                alert('Plan Subscribed successfully')
+                navigate('/')
+            }
         } catch (error){
             alert(error.message);
         }
 
       }
+
+      useEffect((user) => {
+        getDoc(doc(db, "subscriptions", user.email)).then(docSnap => {
+            if (docSnap.exists()) {
+              setSubscriptions(docSnap.data());
+            } else {
+              console.log("No such document!");
+            }
+          })
+      })
   
   return (
     <div>

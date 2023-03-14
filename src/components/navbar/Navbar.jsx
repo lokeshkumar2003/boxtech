@@ -4,10 +4,9 @@ import { useState } from 'react';
 import OverlayCnt from '../overlay/OverlayCnt';
 import { useEffect } from 'react';
 import { getAuth } from 'firebase/auth';
-import { CloseRounded } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 import {  MenuItem } from '@mui/material';
 import { Link } from 'react-router-dom';
-// import Select from '@mui/material';
 import Select from '@mui/material/Select';
 
 export const Navbar = () => {
@@ -19,6 +18,7 @@ export const Navbar = () => {
 
 
   const auth = getAuth();
+  const navigate = useNavigate();
 
   
 
@@ -34,8 +34,14 @@ export const Navbar = () => {
   }
 
   const handleLogout = () => {
-    auth.signOut();
-    setUserDetails(null);
+    try {
+        auth.signOut();
+        navigate('/');
+        alert('Logged out successfully...!')
+        setUserDetails(null);
+    } catch (error) {
+        alert(error.message);
+    }
   }
 
 
