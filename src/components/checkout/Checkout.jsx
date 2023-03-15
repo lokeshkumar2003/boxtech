@@ -2,7 +2,7 @@ import React from 'react';
 import { getAuth } from 'firebase/auth';
 import { useEffect , useState } from 'react';
 import Footer from '../footer/Footer';
-import { collection , doc  } from "firebase/firestore"; 
+import { doc  } from "firebase/firestore"; 
 import { setDoc , getDoc } from 'firebase/firestore';
 // import { db } from '../firebase/firebase';
 import { db } from '../firebase/firebase';
@@ -19,7 +19,15 @@ const Checkout = () => {
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
             setUserDetails(user);
-        })
+            getDoc(doc(db, "subscriptions", userDetails.email)).then(docSnap => {
+            if (docSnap.exists()) {
+              setSubscriptions(docSnap.data());
+            } else {
+              console.log("No such document!");
+            }
+          })
+        });
+        
       });
 
       const purchaseSubsciption = async () => {
@@ -29,9 +37,9 @@ const Checkout = () => {
         
         try {
             
-            var docRef = doc(db, "subscriptions", userDetails.email);
-            var docu = docRef.get();
-            if(docu && subscriptions){
+            var docRef = getDoc(doc(db, "subscriptions", userDetails.email));
+            // var docu = docRef.get();
+            if(docRef && subscriptions.length!==0){
                 alert('Already plan purchased');
             } else {
                 await setDoc(doc(db,'subscriptions' , userDetails.email),{
@@ -41,7 +49,7 @@ const Checkout = () => {
                     status: 'active'
                 });
                 alert('Plan Subscribed successfully')
-                navigate('/')
+                navigate('/subscriptions')
             }
         } catch (error){
             alert(error.message);
@@ -49,15 +57,13 @@ const Checkout = () => {
 
       }
 
-      useEffect((user) => {
-        getDoc(doc(db, "subscriptions", user.email)).then(docSnap => {
-            if (docSnap.exists()) {
-              setSubscriptions(docSnap.data());
-            } else {
-              console.log("No such document!");
-            }
-          })
-      })
+      const handleLogout = () => {
+        auth.signOut();
+        alert('Logged out successfully');
+        navigate('/');
+      }
+
+      
   
   return (
     <div>
@@ -77,10 +83,13 @@ const Checkout = () => {
             <div className='flex flex-wrap'>
                     {
                         userDetails 
-                        && <div className='w-[50%] sm:w-full'>
+                        ? <>
+                         <div className='w-[50%] sm:w-full'>
                             <div className='flex p-3 justify-between'>
                                     <h3 className='p-2 text-[20px] sm:text-[18px]'>✔ Sign Up</h3>
-                                    <button className='underline text-black float-right'>
+                                    <button 
+                                        onClick={handleLogout}
+                                        className='underline text-black float-right'>
                                         Logout
                                     </button>
                             </div>
@@ -91,31 +100,36 @@ const Checkout = () => {
                                 Get Plan
                             </button>
                         </div>
-                    }
-                <div className='flex flex-col justify-center items-center w-[50%] sm:w-full'>
-                    <div className='w-[80%] sm:w-[95%]' style={{
-                        border:'1px solid grey '
-                    }}>
-                        <div className='p-4 sm:p-2'>
-                            <h2 className='text-[22px] font-bold p-3 sm:text-[18px]'>Order Summary</h2>
-                            <div className='flex justify-between p-3 text-[16px] sm:text-[14px]'>
-                                <p>Plan</p>
-                                <p>Free</p>
-                            </div>
-                            <div className='flex justify-between p-3 text-[16px] sm:text-[14px]'>
-                                <p>Duration</p>
-                                <p>3 Months</p>
-                            </div>
-                            <div className='h-[20px] border-b-2 m-3 border-[grey]'>
+                        <div className='flex flex-col justify-center items-center w-[50%] sm:w-full'>
+                            <div className='w-[80%] sm:w-[95%]' style={{
+                                border:'1px solid grey '
+                            }}>
+                                <div className='p-4 sm:p-2'>
+                                    <h2 className='text-[22px] font-bold p-3 sm:text-[18px]'>Order Summary</h2>
+                                    <div className='flex justify-between p-3 text-[16px] sm:text-[14px]'>
+                                        <p>Plan</p>
+                                        <p>Free</p>
+                                    </div>
+                                    <div className='flex justify-between p-3 text-[16px] sm:text-[14px]'>
+                                        <p>Duration</p>
+                                        <p>3 Months</p>
+                                    </div>
+                                    <div className='h-[20px] border-b-2 m-3 border-[grey]'>
 
-                            </div>
-                            <div className='flex justify-between p-3'>
-                                <h3 className='font-bold text-[20px] sm:text-[16px]'>Total</h3>
-                                <h3 className='font-bold text-[20px] sm:text-[16px]'>₹ 0.00</h3>
+                                    </div>
+                                    <div className='flex justify-between p-3'>
+                                        <h3 className='font-bold text-[20px] sm:text-[16px]'>Total</h3>
+                                        <h3 className='font-bold text-[20px] sm:text-[16px]'>₹ 0.00</h3>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                        </>
+                        : <div>
+                            <h3 className='text-[20px] text-[grey] text-center p-2'>Please Login to continue</h3>
+                        </div>
+                    }
+                
             </div>
         </div>
         <Footer />

@@ -1,8 +1,7 @@
 import React from 'react';
 import { useState , useEffect } from 'react';
 import { getAuth } from 'firebase/auth';
-import { TextField } from '@mui/material';
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc , deleteDoc } from "firebase/firestore";
 import { db } from '../firebase/firebase';
 import { Link } from 'react-router-dom';
 
@@ -32,7 +31,11 @@ const MySubscriptions = () => {
         
     }
 
-      console.log(subscriptions)
+    const cancelSubscription = () => {
+        deleteDoc(doc(db, "subscriptions", userDetails.email));
+        alert('Subscription cancelled successfully');
+        setSubscriptions([]);
+    }
 
     
     return (
@@ -72,14 +75,6 @@ const MySubscriptions = () => {
                                 </Link>
                             </div>
                         </div>
-                        {/* <div>
-                            <button onClick={setAccountSection(!accountSection)}>
-                                My Account
-                            </button>
-                            <button>
-                                MySubscriptions
-                            </button>
-                        </div> */}
                         <div className='my-4 border-b-2 border-black flex justify-between items-center'>
                             <div>
                                 <h1 className='text-[20px] p-2'>My Subscriptions</h1>
@@ -89,7 +84,7 @@ const MySubscriptions = () => {
                         <div>
                             <h2 className='font-bold text-black text-[18px] p-2'>Purchased plans</h2>
                             {
-                                subscriptions != null
+                                subscriptions.length !== 0
                                 ? <div className='border-2 p-2 rounded-[5px] my-2 border-grey'>
                                     <div className='flex justify-between items-center'>
                                         <h5 className='text-[14px]'>{subscriptions.plan}</h5>
@@ -98,9 +93,19 @@ const MySubscriptions = () => {
                                     </div>
                                     <h5 className='text-[14px] py-2'>Purchased on : {subscriptions.date}</h5>
                                     <h5 className='text-[14px] text-[grey] py-2'>Valid till : {subscriptions.validity}</h5>
+                                    <button 
+                                        onClick={cancelSubscription}
+                                        className='underline black text-[12px] bg-[#2b295c] text-white p-2 my-2 rounded-[5px]'>
+                                        Cancel Subscription
+                                    </button>
                                 </div>
-                                : <div>
-                                    <h5>You've not subscribed to any of the packs yet!</h5>
+                                : <div className='border-2 border-grey rounded-[5px] p-3 m-2s'>
+                                    <h5 className='p-2 text-center'>You've not subscribed to any of the packs yet!</h5>
+                                    <button className='bg-black text-white text-[14px] p-2 mx-auto block rounded-[6px] m-2'>
+                                        <Link to='/checkout'>
+                                            Purchase Now
+                                        </Link>
+                                    </button>
                                 </div>
                             }
                         </div>

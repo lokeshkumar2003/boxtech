@@ -89,12 +89,7 @@ export const Navbar = () => {
           }
         >
           <ul className='mr-[25px] sm:mr-[0] items-center justify-center'>
-            {/* <button
-              className="absolute top-[20px] right-[20px] invisible sm:visible"
-              onClick={() => {
-                setIsNavExpanded(!isNavExpanded);
-              }}
-            ><CloseRounded style={{'fontSize':'40px'}}/></button>    */}
+            
               <li>
                 <Link to="/" className='text-[16px] sm:text-[16px]'>Home</Link>
               </li>
@@ -115,7 +110,10 @@ export const Navbar = () => {
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
                                     style={{
-                                      backgroundImage: `url(${userDetails.photoURL})`,
+                                      backgroundImage: 
+                                      userDetails.photoURL 
+                                      ? `url(${userDetails.photoURL})`
+                                      : `url('images/icons/user.png')`,
                                       backgroundSize : 'cover',
                                       backgroundPosition:'center',
                                       height:'35px',
@@ -143,20 +141,20 @@ export const Navbar = () => {
                                     </li>
                                     </MenuItem>
                                   </Select>
-                                
                             </li>
-                        
                       </div>
                     : <li className='cursor-pointer'>
-                        <button className='text-[16px] sm:text-[16px]'onClick={handleClick}>
+                        <button className='text-[16px] sm:text-[16px]' onClick={handleClick}>
                             Login
                         </button>
                       </li>
               }   
               <li>
-                <button className='bg-[#edbd0f] color-white p-2 rounded-[5px] text-[16px] text-white w-[130px]'>
-                    Get Started  
-                </button>  
+                <Link to="/checkout">
+                    <button className='bg-[#edbd0f] color-white p-2 rounded-[5px] text-[16px] text-white w-[130px]'>
+                        Get Started  
+                    </button>  
+                </Link>
               </li>         
           </ul>
         </div>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import Footer from '../footer/Footer'
 // import { Navbar } from '../navbar/Navbar'
 import './pricing-plans.css';
@@ -12,7 +13,9 @@ const PricingPlans = () => {
                 <p className='text-[12px] tracking-[1px]'>Use this area to describe one of your memberships.</p>
         </div>
         <div style={{'borderBottomRightRadius':'80%'}} className='bg-[#ffd7ef] h-[100px]'></div>
-        <div className='flex justify-around items-center m-[3%] mb-[70px] w-[50%] sl:w-[80%] mr:w-[90%] sm:p-[20px] h-auto mx-auto sm:w-[100%] sm:flex-col'>
+        <div 
+          style={{transform:'translateY(-50px)'}}
+          className='flex justify-around items-center m-[3%] mb-[70px] w-[50%] sl:w-[80%] mr:w-[90%] sm:p-[20px] h-auto mx-auto sm:w-[100%] sm:flex-col'>
           {/**First col */}
                 <div className="rounded-[10px] h-[390px] w-[330px] m-[18px] sm:m-[5%] sm:mt-[50px] sm:w-[100%]">
                     <div className="bg-[#FFBF23] w-[100%] p-[10%] rounded-t-[10px]">
@@ -20,9 +23,9 @@ const PricingPlans = () => {
                         <h6 className='py-[4px]'><span className='text-[11px]'>Rs </span><span className='text-[28px] font-bold'>0</span> </h6>
                         <p className='py-[4px] text-[12px]'>Access to all features</p>
                         <p className='pt-[10px] pb-[5px] text-[10px]'>Valid for 3 months</p>
-                        <a href="/"><button className="bg-black p-[10px] my-[20px] w-full  text-white rounded-[5px] tracking-[1px] block mx-auto sm:w-full">
+                        <Link to="/checkout"><button className="bg-black p-[10px] my-[20px] w-full  text-white rounded-[5px] tracking-[1px] block mx-auto sm:w-full">
                             Get Started
-                        </button></a>
+                        </button></Link>
                     </div>
                     <div className="p-[18px] tracking-[1px] leading-[27px] bg-[#FFD7EF] h-[125px] w-full rounded-b-[10px]">
                       <ul className='points'>
@@ -41,9 +44,9 @@ const PricingPlans = () => {
                         <h6 className='py-[4px]'><span className='text-[11px]'>Rs </span><span className='text-[28px] font-bold'>0</span> </h6>
                         <p className='py-[4px] text-[12px]'>Access to all features</p>
                         <p className='pt-[10px] pb-[5px] text-[10px]'>Valid for 3 months</p>
-                        <a href="/"><button className="bg-white p-[10px] my-[20px] w-full text-black rounded-[5px] tracking-[1px] block mx-auto sm:w-full">
+                        <Link to="/checkout-premium"><button className="bg-white p-[10px] my-[20px] w-full text-black rounded-[5px] tracking-[1px] block mx-auto sm:w-full">
                             Get Started
-                        </button></a>
+                        </button></Link>
                     </div>
                     <div className="p-[18px] tracking-[1px] leading-[27px] h-[125px] w-full bg-[#FFD7EF] rounded-b-[10px]">
                       <ul className='points'>

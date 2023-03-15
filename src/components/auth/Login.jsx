@@ -3,6 +3,7 @@ import { TextField } from '@mui/material';
 import { provider } from '../firebase/firebase';
 import { getAuth, signInWithPopup , signInWithEmailAndPassword } from 'firebase/auth';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -14,21 +15,28 @@ const Login = (props) => {
     const [password , setPasswordValue] = React.useState('');
 
     const auth = getAuth();
+    const navigate = useNavigate();
 
     const handleClick = () => {
-        signInWithPopup(auth , provider)
-            .then((data) => {
-                setValue(data.user.email);
-                localStorage.setItem('email',data.user.email)
-            })
+        try {
+            signInWithPopup(auth , provider)
+                .then((data) => {
+                    setValue(data.user.email);
+                    localStorage.setItem('email',data.user.email)
+                });
+            navigate('/');
+        } catch (error) {
+            alert(error.message);
+        }
     };
 
     const handleLogin = () => {
-        signInWithEmailAndPassword(auth , email , password)
-            .then((data) => {
-                setValue(data.user.email);
-                localStorage.setItem('email',data.user.email)
-            });
+        try {
+            signInWithEmailAndPassword(auth , email , password);         
+            navigate('/');
+        } catch (error) {
+            alert(error.message);
+        }
     };
 
     useEffect(
