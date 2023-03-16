@@ -32,8 +32,8 @@ const MySubscriptions = () => {
     }
 
     const cancelSubscription = () => {
-        deleteDoc(doc(db, "subscriptions", userDetails.email));
         alert('Subscription cancelled successfully');
+        deleteDoc(doc(db, "subscriptions", userDetails.email));
         setSubscriptions([]);
     }
 
