@@ -1,5 +1,6 @@
 import React from 'react';
 import './pricing.css';
+import { Link } from 'react-router-dom';
 
 const Pricing = () => {
   return (
@@ -8,11 +9,11 @@ const Pricing = () => {
             <div id='con1'>
                 <h1 className='my-[18px] w-[70%] sm:w-[100%] sm:text-[28px]'>Explore our <span style={{'color':'#FFBF23'}}>Pricing</span> Options</h1>
                 <p className='w-[80%] sm:w-full'>Simple plans that grow with your business. No contracts. No Setup fees.</p>
-                <a href='/'>
+                <Link to='/checkout'>
                     <button className='bg-black px-[20px] py-[10px] my-[20px] text-white rounded-[5px] tracking-[1px] '>
                         See More
                     </button>
-                </a>
+                </Link>
             </div>
         </div>
         <div>
@@ -26,9 +27,9 @@ const Pricing = () => {
                         <h6 className='py-[4px]'><span className='text-[11px]'>Rs </span><span className='text-[28px] font-bold'>0</span> </h6>
                         <p className='py-[4px] text-[12px]'>Access to all features</p>
                         <p className='pt-[10px] pb-[5px] text-[10px]'>Valid for 3 months</p>
-                        <a href="/"><button className="bg-black p-[10px] my-[20px] text-white rounded-[5px] tracking-[1px] block mx-auto sm:w-full">
+                        <Link to="/checkout"><button className="bg-black p-[10px] my-[20px] text-white rounded-[5px] tracking-[1px] block mx-auto sm:w-full">
                             Get Started
-                        </button></a>
+                        </button></Link>
                     </div>
                     <div className="p-[18px] tracking-[1px] leading-[27px] bg-[#FFD7EF]">
                             <h6 className="text-[12px]">Custom Branding</h6>

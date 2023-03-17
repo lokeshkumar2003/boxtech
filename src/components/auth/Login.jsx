@@ -1,7 +1,6 @@
-import { MailOutline } from '@mui/icons-material';
 import React from 'react';
 import { TextField } from '@mui/material';
-import { auth , provider } from '../firebase/firebase';
+import { provider } from '../firebase/firebase';
 import { getAuth, signInWithPopup , signInWithEmailAndPassword } from 'firebase/auth';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -16,38 +15,40 @@ const Login = (props) => {
     const [password , setPasswordValue] = React.useState('');
 
     const auth = getAuth();
+    const navigate = useNavigate();
 
     const handleClick = () => {
-        signInWithPopup(auth , provider)
-            .then((data) => {
-                setValue(data.user.email);
-                localStorage.setItem('email',data.user.email)
-            })
+        try {
+            signInWithPopup(auth , provider)
+                .then((data) => {
+                    setValue(data.user.email);
+                    localStorage.setItem('email',data.user.email)
+                });
+            navigate('/');
+        } catch (error) {
+            alert(error.message);
+        }
     };
 
     const handleLogin = () => {
-        signInWithEmailAndPassword(auth , email , password)
-            .then((data) => {
-                setValue(data.user.email);
-                localStorage.setItem('email',data.user.email)
-            });
+        try {
+            signInWithEmailAndPassword(auth , email , password);         
+            navigate('/');
+        } catch (error) {
+            alert(error.message);
+        }
     };
 
     useEffect(
         () => {
             setValue(localStorage.getItem('email'))
-        }
+        } , []
     );
 
 
 
   return (
     <div>
-        {/* {
-            value 
-            ? <Navbar email={value} />
-            : <Navbar />
-        } */}
         <h1 className='text-center text-[35px] p-3'>Login</h1>
               <h3 className='text-[16px] text-center'>
                 <span>Not a Member? </span>

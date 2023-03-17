@@ -1,32 +1,27 @@
 import React from 'react';
-// import { Menu } from '@mui/material';
 import './navbar.css';
 import { useState } from 'react';
-import { CloseRounded } from '@mui/icons-material';
-import Login from '../auth/Login';
-import SignUp from '../auth/SignUp';
 import OverlayCnt from '../overlay/OverlayCnt';
 import { useEffect } from 'react';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../firebase/firebase';
-import { Menu , MenuItem } from '@mui/material';
+import { getAuth } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+import {  MenuItem } from '@mui/material';
+import { Link } from 'react-router-dom';
+import Select from '@mui/material/Select';
 
 export const Navbar = () => {
-
-  const options = [
-      {name:'Home' , link:'/'},
-      {name:'Product' , link:'#products'},
-      {name:'Pricing Plans' , link:'/pricing-plans'},
-      {name:'Contact' , link:'#footer'},
-      {name:'Login',link:'/'},
-];
 
 
   const [isNavExpanded, setIsNavExpanded] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const [userDetails , setUserDetails] = useState(null);
 
+
   const auth = getAuth();
+  const navigate = useNavigate();
+
+  
+
 
   const handleClick = () => {
     setShowOverlay(!showOverlay);
@@ -39,8 +34,14 @@ export const Navbar = () => {
   }
 
   const handleLogout = () => {
-    auth.signOut();
-    setUserDetails(null);
+    try {
+        auth.signOut();
+        navigate('/');
+        alert('Logged out successfully...!')
+        setUserDetails(null);
+    } catch (error) {
+        alert(error.message);
+    }
   }
 
 
@@ -51,12 +52,13 @@ export const Navbar = () => {
   });
 
 
+
   return (
     <div className='pl-[60px] pr-[60px] sm:pl-0 sm:pr-0'>
       <nav className="navigation" >
-        <a href="/" className="brand-name" >
+        <Link to="/" className="brand-name" >
           <img src="images/logo.png" alt="logo" className="h-[40px] w-[140px] ml-[25px] sm:ml-[0px]"/>
-        </a>
+        </Link>
         <button
           className="hamburger"
           onClick={() => {
@@ -86,43 +88,74 @@ export const Navbar = () => {
             isNavExpanded ? "navigation-menu expanded" : "navigation-menu"
           }
         >
-          <ul className='mr-[25px] sm:mr-[0]'>            
+          <ul className='mr-[25px] sm:mr-[0] items-center justify-center'>
+            
               <li>
-                <a href="/" className='text-[16px] sm:text-[16px]'>Home</a>
+                <Link to="/" className='text-[16px] sm:text-[16px]'>Home</Link>
               </li>
               <li>
-                <a href="#products" className='text-[16px] sm:text-[16px]'>Product</a>
+                <Link to="#products" className='text-[16px] sm:text-[16px]'>Product</Link>
               </li>
               <li>
-                <a href="/pricing-plans" className='text-[16px] sm:text-[16px]'>Pricing Plans</a>
+                <Link to="/pricing-plans" className='text-[16px] sm:text-[16px]'>Pricing Plans</Link>
               </li>
               <li>
-                <a href="#footer" className='text-[16px] sm:text-[16px]'>Contact</a>
+                <Link to="#footer" className='text-[16px] sm:text-[16px]'>Contact</Link>
               </li>
-              
               {
                 userDetails   
-                    ? <div>
-                          <li>{userDetails.email}</li> 
-                          <li className='cursor-pointer'>
-                            <button className='text-[16px] sm:text-[16px]' onClick={handleLogout}>
-                                Logout
-                            </button>
-                          </li>
+                    ? <div style={{'display':'flex' , 'alignItems':'center','justifyContent':'center'}}>               
+                            <li>
+                                  <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    style={{
+                                      backgroundImage: 
+                                      userDetails.photoURL 
+                                      ? `url(${userDetails.photoURL})`
+                                      : `url('images/icons/user.png')`,
+                                      backgroundSize : 'cover',
+                                      backgroundPosition:'center',
+                                      height:'35px',
+                                      width:'35px',
+                                      borderRadius:'50%',
+                                    }}
+                                    
+                                  >
+                                    {/* <img src={userDetails.photoURL} alt='profile pic' className='cursor-pointer rounded-[50%] w-full h-full'/> */}
+                                    <MenuItem className='text-[16px]'>
+                                      <Link to='/account'>
+                                          My Account
+                                      </Link>
+                                    </MenuItem>
+                                    <MenuItem className='text-[16px]'>
+                                      <Link to='/subscriptions'  >
+                                          My Subscription
+                                      </Link>
+                                    </MenuItem>
+                                    <MenuItem>
+                                    <li onClick={handleLogout}>
+                                      <button className='text-[16px]' onClick={handleLogout}>
+                                          Logout
+                                      </button>
+                                    </li>
+                                    </MenuItem>
+                                  </Select>
+                            </li>
                       </div>
                     : <li className='cursor-pointer'>
-                        <button className='text-[16px] sm:text-[16px]'onClick={handleClick}>
+                        <button className='text-[16px] sm:text-[16px]' onClick={handleClick}>
                             Login
                         </button>
                       </li>
-
-              }
-              {/* {
-                props 
-                ? <li>{props.email}</li>
-                : ''
-              } */}
-            
+              }   
+              <li>
+                <Link to="/checkout">
+                    <button className='bg-[#edbd0f] color-white p-2 rounded-[5px] text-[16px] text-white w-[130px]'>
+                        Get Started  
+                    </button>  
+                </Link>
+              </li>         
           </ul>
         </div>
       </nav>

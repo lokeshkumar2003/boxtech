@@ -1,9 +1,10 @@
 import React from 'react';
 import { TextField } from '@mui/material';
-import { getAuth , createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth , createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { signInWithPopup } from 'firebase/auth';
 import { provider } from '../firebase/firebase';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = (props) => {
 
@@ -14,13 +15,16 @@ const SignUp = (props) => {
   const [emailValue , setEmailValue] = React.useState('');
   const [passwordValue , setPasswordValue] = React.useState('');
   const auth = getAuth();
+  const navigate = useNavigate();
 
 
   const handleSignup = () => {
     createUserWithEmailAndPassword(auth , emailValue , passwordValue)
       .then((data) => {
         console.log(data.user.email);
-    })
+    });
+    signInWithEmailAndPassword(auth , emailValue , passwordValue);
+    navigate('/');
   };
 
   const handleWithGoogle = () => {
